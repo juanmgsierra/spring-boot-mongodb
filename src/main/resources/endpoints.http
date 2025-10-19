@@ -1,0 +1,29 @@
+@hostName = http://localhost:8080/api/v1/employee
+
+### create
+POST {{hostName}}/create
+Content-Type: application/json
+
+{
+	"departmentId": 14,
+	"name": "Richard",
+	"age" : 40,
+	"position": "Sr backend"
+}
+
+### get list
+GET {{hostName}}/list
+
+### update
+PUT {{hostName}}/update/68f540be4dda6bd3c404be2d
+Content-Type: application/json
+
+{
+	"departmentId": 14,
+	"name": "Richard Santos",
+	"age" : 40,
+	"position": "Sr backend"
+}
+
+### get employee
+GET {{hostName}}/68f53b7945458b292ba9c817
