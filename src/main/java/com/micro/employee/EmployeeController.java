@@ -2,6 +2,7 @@ package com.micro.employee;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,5 +50,13 @@ public class EmployeeController {
             return ResponseEntity.badRequest().build();
         }
         return ResponseEntity.ok(employee.get());
+    }
+
+    @GetMapping("/pageable")
+    public ResponseEntity<Page<Employee>> getEmployeesPageable(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        Page<Employee> employees = employeeService.getEmployeesPageable(page, size);
+        return ResponseEntity.ok(employees);
     }
 }

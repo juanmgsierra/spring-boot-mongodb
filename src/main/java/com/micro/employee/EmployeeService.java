@@ -3,6 +3,8 @@ package com.micro.employee;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
@@ -37,4 +39,9 @@ public class EmployeeService {
     public Optional<Employee> getEmployee(String id){
         return employeeRepo.findById(id);
     } 
+
+    public Page<Employee> getEmployeesPageable(int page, int size) {
+        PageRequest pageable = PageRequest.of(page, size);
+        return employeeRepo.findAll(pageable);
+    }
 }

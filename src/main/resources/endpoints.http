@@ -27,3 +27,6 @@ Content-Type: application/json
 
 ### get employee
 GET {{hostName}}/68f53b7945458b292ba9c817
+
+### get page employee
+GET {{hostName}}/pageable?page=0&size=1
