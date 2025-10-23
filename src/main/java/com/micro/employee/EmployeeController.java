@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,6 +29,7 @@ public class EmployeeController {
         return ResponseEntity.ok(employees);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(path = "create")
     public ResponseEntity<Employee> create(@RequestBody Employee employee){
         var newEmployee = employeeService.saveEmployee(employee);
