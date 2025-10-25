@@ -36,6 +36,7 @@ public class EmployeeController {
         return ResponseEntity.ok(newEmployee);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping(path = "update/{id}")
     public ResponseEntity<Employee> update(@PathVariable String id, @RequestBody Employee employee){
         var updatedEmployee = employeeService.updateEmployee(employee, id);

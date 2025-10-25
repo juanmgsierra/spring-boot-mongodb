@@ -1,8 +1,9 @@
 @hostName = http://localhost:8080/api/v1
-@token = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc2MTE5NzMzOCwiZXhwIjoxNzYxMjgzNzM4fQ.MqaP0qz5sCCcU0PNBQeAdFc9R7B7a1FVyuYCDJO2qJw
-### create
+@token = eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0FETUlOIl0sInN1YiI6ImFkbWluIiwiaWF0IjoxNzYxMzY3NTQ5LCJleHAiOjE3NjE0NTM5NDl9.VmHi4n_3RaUbiN0zEEXfus9HAWzcc8LF9HxK3bCoLU4
+
 POST {{hostName}}/employee/create
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
 	"departmentId": 14,
@@ -13,10 +14,12 @@ Content-Type: application/json
 
 ### get list
 GET {{hostName}}/employee/list
+Authorization: Bearer {{token}}
 
 ### update
-PUT {{hostName}}/employee/update/68f540be4dda6bd3c404be2d
+PUT {{hostName}}/employee/update/68fc5686c2c5139ffc2adb0f
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
 	"departmentId": 14,
@@ -39,7 +42,7 @@ POST  {{hostName}}/auth/register
 Content-Type: application/json
 
 {
-  "username": "juanmgsierra",
+  "username": "jose",
   "password": "123456",
   "roles": ["AUDIT"]
 }
