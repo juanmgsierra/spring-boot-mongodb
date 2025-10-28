@@ -1,8 +1,9 @@
-@hostName = http://localhost:8080/api/v1/employee
+@hostName = http://localhost:8080/api/v1
+@token = eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0FETUlOIl0sInN1YiI6ImFkbWluIiwiaWF0IjoxNzYxMzY3NTQ5LCJleHAiOjE3NjE0NTM5NDl9.VmHi4n_3RaUbiN0zEEXfus9HAWzcc8LF9HxK3bCoLU4
 
-### create
-POST {{hostName}}/create
+POST {{hostName}}/employee/create
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
 	"departmentId": 14,
@@ -12,11 +13,13 @@ Content-Type: application/json
 }
 
 ### get list
-GET {{hostName}}/list
+GET {{hostName}}/employee/list
+Authorization: Bearer {{token}}
 
 ### update
-PUT {{hostName}}/update/68f540be4dda6bd3c404be2d
+PUT {{hostName}}/employee/update/68fc5686c2c5139ffc2adb0f
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
 	"departmentId": 14,
@@ -26,7 +29,29 @@ Content-Type: application/json
 }
 
 ### get employee
-GET {{hostName}}/68f53b7945458b292ba9c817
+GET {{hostName}}/employee/68f53b7945458b292ba9c817
+Authorization: Bearer {{token}}
 
 ### get page employee
-GET {{hostName}}/pageable?page=0&size=1
+
+GET {{hostName}}/employee/pageable?page=0&size=1
+Authorization: Bearer {{token}}
+
+### create user
+POST  {{hostName}}/auth/register
+Content-Type: application/json
+
+{
+  "username": "jose",
+  "password": "123456",
+  "roles": ["AUDIT"]
+}
+
+### login
+POST  {{hostName}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "123456"
+}
